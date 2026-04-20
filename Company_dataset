@@ -1,0 +1,124 @@
+import matplotlib.pyplot as plt
+
+# Dataset: 30 companies with employee counts
+data = {
+    "Amazon": 1500000,
+    "Walmart": 2300000,
+    "IBM": 288000,
+    "Accenture": 733000,
+    "TCS": 614000,
+    "Infosys": 343000,
+    "Wipro": 234000,
+    "HCLTech": 224000,
+    "Google": 182000,
+    "Microsoft": 221000,
+    "Apple": 164000,
+    "Meta": 86000,
+    "Oracle": 143000,
+    "Intel": 131000,
+    "Cisco": 85000,
+    "SAP": 111000,
+    "Salesforce": 73000,
+    "Adobe": 29000,
+    "NVIDIA": 26000,
+    "Uber": 32000,
+    "Airbnb": 6800,
+    "Netflix": 13000,
+    "PayPal": 29000,
+    "Spotify": 9800,
+    "Zoom": 8400,
+    "Twitter": 7500,
+    "Snap": 5300,
+    "Shopify": 11000,
+    "Dell": 133000,
+    "HP": 58000
+}
+
+# Extract values
+companies = list(data.keys())
+employees = list(data.values())
+
+# Plot
+plt.figure(figsize=(10, 10))
+plt.pie(
+    employees,
+    labels=companies,
+    autopct='%1.1f%%',
+    startangle=140
+)
+
+plt.title("Employee Distribution of 30 Companies")
+plt.axis('equal')
+
+plt.show()
+
+
+# Sort data (largest to smallest → funnel shape)
+sorted_data = dict(sorted(data.items(), key=lambda x: x[1], reverse=True))
+
+companies = list(sorted_data.keys())
+revenues = list(sorted_data.values())
+
+# Plot horizontal bars (funnel style)
+plt.figure(figsize=(10, 12))
+plt.barh(companies, revenues)
+
+# Invert y-axis so largest is at top
+plt.gca().invert_yaxis()
+
+plt.title("Funnel Chart: Companies by Revenue (Billion USD)")
+plt.xlabel("Revenue (Billion USD)")
+plt.ylabel("Companies")
+
+plt.show()
+
+
+
+
+# Sort by rating (optional, makes chart cleaner)
+sorted_data = dict(sorted(data.items(), key=lambda x: x[1]))
+
+companies = list(sorted_data.keys())
+ratings = list(sorted_data.values())
+
+# Plot
+plt.figure(figsize=(12, 8))
+plt.barh(companies, ratings)
+
+plt.xlabel("Rating (out of 5)")
+plt.ylabel("Companies")
+plt.title("Company Ratings Comparison (30 Companies)")
+
+plt.xlim(3.5, 5)  # zoom for better visualization
+plt.show()
+
+import matplotlib.pyplot as plt
+
+# Years
+years = [2019, 2020, 2021, 2022, 2023]
+
+# Revenue data (in billion USD - sample realistic trends)
+data = {
+    "Apple": [260, 274, 365, 394, 383],
+    "Microsoft": [125, 143, 168, 198, 211],
+    "Amazon": [280, 386, 469, 514, 575],
+    "Google": [161, 182, 257, 282, 307],
+    "Meta": [70, 86, 118, 134, 135]
+}
+
+# Plot
+plt.figure(figsize=(10, 6))
+
+for company, values in data.items():
+    plt.plot(years, values, marker='o', label=company)
+
+# Labels & Title
+plt.xlabel("Year")
+plt.ylabel("Revenue (Billion USD)")
+plt.title("Revenue Growth of Companies Over Years")
+
+plt.legend()
+plt.grid()
+
+plt.show()
+
